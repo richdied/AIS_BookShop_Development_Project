@@ -45,23 +45,23 @@
 	<li>
 		<h3>&nbsp;&nbsp;&nbsp;&nbsp;국내외 도서</h3>
 		<ul>
-			<li><a href="${contextPath}/goods/goodsList.do">IT/인터넷</a></li>
-			<li><a href="#">경제/경영</a></li>
-			<li><a href="#">대학교재</a></li>
-			<li><a href="#">자기계발</a></li>
-			<li><a href="#">자연과학/공학</a></li>
-			<li><a href="#">역사/인문학</a></li>
+			<li><a href="${contextPath}/goods/searchGoods.do?searchWord=자바&search=검+색">JAVA</a></li>
+			<li><a href="${contextPath}/goods/searchGoods.do?searchWord=파이썬&search=검+색">Python</a></li>
+			<li><a href="${contextPath}/goods/searchGoods.do?searchWord=리액트&search=검+색">React</a></li>
+			<li><a href="${contextPath}/goods/searchGoods.do?searchWord=딥러닝&search=검+색">deep learning</a></li>
+			<li><a href="${contextPath}/goods/searchGoods.do?searchWord=실기&search=검+색">practical technique</a></li>
+		<li><a href="${contextPath}/goods/searchGoods.do?searchWord=따라하기&search=검+색">copy</a></li>
 		</ul>
 	</li>
 	<li>
       <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日本書籍</h3>
       <ul>
-      <li><a href="${contextPath}/goods/goodsList.do">IT/インターネット</a></li>
-         <li><a href="#">経済/経営</a></li>
-         <li><a href="#">大学専攻</a></li>
-         <li><a href="#">自己啓発</a></li>
-         <li><a href="#">自然科学/工学</a></li>
-         <li><a href="#">歴史/人文学</a></li>
+      <li><a href="${contextPath}/goods/searchGoods.do?searchWord=자바&search=검+색">JAVA</a></li>
+       <li><a href="${contextPath}/goods/searchGoods.do?searchWord=파이썬&search=검+색">Python</a></li>
+       <li><a href="${contextPath}/goods/searchGoods.do?searchWord=리액트&search=검+색">React</a></li>
+         <li><a href="${contextPath}/goods/searchGoods.do?searchWord=딥러닝&search=검+색">deep learning</a></li>
+         <li><a href="${contextPath}/goods/searchGoods.do?searchWord=실기&search=검+색">practical technique</a></li>
+         	<li><a href="${contextPath}/goods/searchGoods.do?searchWord=따라하기&search=검+색">copy</a></li>
 		</ul>
 	</li>
  </c:otherwise>
@@ -72,15 +72,7 @@
 <div id="banner">
 	<a href="#"><img width="190" height="163" src="${contextPath}/resources/image/n-pay.jpg"> </a>
 </div>
-<DIV id="notice">
-	<H2>공지사항</H2>
-	<UL>
-	
-	<c:forEach  var="i" begin="1" end="5" step="1">
-		<li><a href="#">공지사항입니다.${ i}</a></li>
-	</c:forEach>
-	</ul>
-</div>
+
 
 
 <div id="banner">
