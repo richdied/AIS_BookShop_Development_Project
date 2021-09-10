@@ -22,7 +22,7 @@
 				displayResult(jsonInfo);
 			},
 			error : function(data, textStatus) {
-				alert("에러가 발생했습니다."+data);
+				alert("エラーが発生しました。"+data);
 			},
 			complete : function(data, textStatus) {
 				//alert("작업을완료 했습니다");
@@ -65,26 +65,28 @@
 		  element.style.display = 'none';
 	   }
 	}
-
 </script>
 <body>
 	<div id="logo">
 	<a href="${contextPath}/main/main.do">
-		<img width="200" height="140" alt="booktopia" src="${contextPath}/resources/image/Booktopia_Logo3.png">
+		<img width="200" height="140" alt="booktopia" src="${contextPath}/resources/image/Booktopia_Logo4.png">
 		</a>
 	</div>
 	<div id="head_link">
 		<ul>
 		   <c:choose>
 		     <c:when test="${isLogOn==true and not empty memberInfo }">
-			   <li><a href="${contextPath}/member/logout.do">로그아웃</a></li>
-			   <li><a href="${contextPath}/mypage/myPageMain.do">마이페이지</a></li>
-			   <li><a href="${contextPath}/cart/myCartList.do">장바구니</a></li>
-			   <li><a href="${contextPath}/mypage/listMyOrderHistory.do">주문배송</a></li>
+			   <li><a href="${contextPath}/member/logout.do">ログアウト</a></li>
+			   <li><a href="${contextPath}/mypage/myPageMain.do">マイページ</a></li>
+			   <li><a href="${contextPath}/cart/myCartList.do">ショッピングカート</a></li>
+			   <li><a href="${contextPath}/mypage/listMyOrderHistory.do">注文配送</a></li>
+
+			   
+	           <li><a href="${contextPath}/admin/goods/adminGoodsMain.do">管理ページ</a></li>
 			 </c:when>
 			 <c:otherwise>
-			   <li><a href="${contextPath}/member/loginForm.do">로그인</a></li>
-			   <li><a href="${contextPath}/member/memberForm.do">회원가입</a></li> 
+			   <li><a href="${contextPath}/member/loginForm.do">ログイン</a></li>
+			   <li><a href="${contextPath}/member/memberForm.do">新規会員登録</a></li> 
 			 </c:otherwise>
 			</c:choose>
 			 
@@ -95,7 +97,7 @@
 	<div id="search" >
 		<form name="frmSearch" action="${contextPath}/goods/searchGoods.do" >
 			<input name="searchWord" class="main_input" type="text"  onKeyUp="keywordSearch()"> 
-			<input type="submit" name="search" class="btn1"  value="검 색" >
+			<input type="submit" name="search" class="btn1"  value="検索" >
 		</form>
 	</div>
    <div id="suggest">

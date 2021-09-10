@@ -319,26 +319,26 @@ function fn_show_order_detail(){
 	for(var i=0; i<r_pay_method.length;i++){
 	  if(r_pay_method[i].checked==true){
 		  pay_method=r_pay_method[i].value
-		  if(pay_method=="신용카드"){
+		  if(pay_method=="クレジットカード"){
 			var i_card_com_name=document.getElementById("card_com_name");
 			var i_card_pay_month=document.getElementById("card_pay_month");
 			card_com_name=i_card_com_name.value;
 			card_pay_month=i_card_pay_month.value;
 			pay_method+="<Br>"+
-				 		"카드사:"+card_com_name+"<br>"+
-				 		"할부개월수:"+card_pay_month;
-			pay_orderer_hp_num="해당없음";
+				 		"カード会社:"+card_com_name+"<br>"+
+				 		"割賦月数:"+card_pay_month;
+			pay_orderer_hp_num="該当なし";
 			
-		  }else if(pay_method=="휴대폰결제"){
+		  }else if(pay_method=="携帯決済"){
 			var i_pay_order_tel1=document.getElementById("pay_order_tel1");
 			var i_pay_order_tel2=document.getElementById("pay_order_tel2");
 			var i_pay_order_tel3=document.getElementById("pay_order_tel3");
 			pay_orderer_hp_num=i_pay_order_tel1.value+"-"+
 						   	    i_pay_order_tel2.value+"-"+
 							    i_pay_order_tel3.value;
-			pay_method+="<Br>"+"결제휴대폰번호:"+pay_orderer_hp_num;
-			card_com_name="해당없음";
-			card_pay_month="해당없음";
+			pay_method+="<Br>"+"決済携帯番号:"+pay_orderer_hp_num;
+			card_com_name="該当なし";
+			card_pay_month="該当なし";
 		  } //end if
 		 break;
 	  }// end for
@@ -376,9 +376,9 @@ function fn_show_order_detail(){
 	receiver_hp_num=hp1+"-"+hp2+"-"+hp3;
 	receiver_tel_num=tel1+"-"+tel2+"-"+tel3;
 	
-	delivery_address="우편번호:"+i_zipcode.value+"<br>"+
-						"도로명 주소:"+i_roadAddress.value+"<br>"+
-						"[지번 주소:"+i_jibunAddress.value+"]<br>"+
+	delivery_address="郵便番号:"+i_zipcode.value+"<br>"+
+						"道路名住所:"+i_roadAddress.value+"<br>"+
+						"[地番住所:"+i_jibunAddress.value+"]<br>"+
 								  i_namujiAddress.value;
 	
 	delivery_message=i_delivery_message.value;
@@ -400,8 +400,8 @@ function fn_show_order_detail(){
 	
 	p_order_goods_id.innerHTML=goods_id;
 	p_order_goods_title.innerHTML=goods_title;
-	p_total_order_goods_qty.innerHTML=total_order_goods_qty+"개";
-	p_total_order_goods_price.innerHTML=total_order_goods_price+"원";
+	p_total_order_goods_qty.innerHTML=total_order_goods_qty+"個";
+	p_total_order_goods_price.innerHTML=total_order_goods_price+"円";
 	p_orderer_name.innerHTML=orderer_name;
 	p_receiver_name.innerHTML=receiver_name;
 	p_delivery_method.innerHTML=delivery_method;
@@ -416,7 +416,7 @@ function fn_show_order_detail(){
 
 function fn_process_pay_order(){
 	
-	alert("최종 결제하기");
+	alert("最終決済");
 	var formObj=document.createElement("form");
     var i_receiver_name=document.createElement("input");
     
@@ -501,17 +501,17 @@ function fn_process_pay_order(){
 </script>
 </head>
 <body>
-	<H1>1.주문확인</H1>
+	<H1>1.注文確認</H1>
 <form  name="form_order">	
 	<table class="list_view">
 		<tbody align=center>
 			<tr style="background: #33ff00">
-				<td colspan=2 class="fixed">주문상품명</td>
-				<td>수량</td>
-				<td>주문금액</td>
-				<td>배송비</td>
-				<td>예상적립금</td>
-				<td>주문금액합계</td>
+				<td colspan=2 class="fixed">注文商品名</td>
+				<td>製品数量</td>
+				<td>注文金額</td>
+				<td>配送料</td>
+				<td>予想積立金</td>
+				<td>注文金額の合計</td>
 			</tr>
 			<tr>
 				<c:forEach var="item" items="${myOrderList }">
@@ -529,14 +529,14 @@ function fn_process_pay_order(){
 					  </h2>
 					</td>
 					<td>
-					  <h2>${item.order_goods_qty }개<h2>
+					  <h2>${item.order_goods_qty }個<h2>
 					    <input   type="hidden" id="h_order_goods_qty" name="h_order_goods_qty" value="${item.order_goods_qty}" />
 					</td>
-					<td><h2>${item.goods_sales_price}원 (10% 할인)</h2></td>
-					<td><h2>0원</h2></td>
-					<td><h2>${1500 *item.order_goods_qty}원</h2></td>
+					<td><h2>${item.goods_sales_price}円 (10% 割引)</h2></td>
+					<td><h2>0円</h2></td>
+					<td><h2>${1500 *item.order_goods_qty}円</h2></td>
 					<td>
-					  <h2>${item.goods_sales_price * item.order_goods_qty}원</h2>
+					  <h2>${item.goods_sales_price * item.order_goods_qty}円</h2>
 					  <input  type="hidden" id="h_each_goods_price"  name="h_each_goods_price" value="${item.goods_sales_price * item.order_goods_qty}" />
 					</td>
 			</tr>
@@ -553,38 +553,38 @@ function fn_process_pay_order(){
 
 	<br>
 	<br>
-	<H1>2.배송지 정보</H1>
+	<H1>2.お届け先情報</H1>
 	<DIV class="detail_table">
 	
 		<table>
 			<tbody>
 				<tr class="dot_line">
-					<td class="fixed_join">배송방법</td>
+					<td class="fixed_join">配送方法</td>
 					<td>
-					    <input type="radio" id="delivery_method" name="delivery_method" value="일반택배" checked>일반택배 &nbsp;&nbsp;&nbsp; 
-						<input type="radio" id="delivery_method" name="delivery_method" value="편의점택배">편의점택배 &nbsp;&nbsp;&nbsp; 
-						<input type="radio" id="delivery_method" name="delivery_method" value="해외배송">해외배송 &nbsp;&nbsp;&nbsp;
+					    <input type="radio" id="delivery_method" name="delivery_method" value="普通の宅配" checked>普通の宅配 &nbsp;&nbsp;&nbsp; 
+						<input type="radio" id="delivery_method" name="delivery_method" value="コンビニ宅配">コンビニ宅配 &nbsp;&nbsp;&nbsp; 
+						<input type="radio" id="delivery_method" name="delivery_method" value="海外配送">海外配送 &nbsp;&nbsp;&nbsp;
 				    </td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">배송지 선택</td>
+					<td class="fixed_join">お届け先選択</td>
 					<td><input type="radio" name="delivery_place"
-						onClick="restore_all()" value="기본배송지" checked>기본배송지 &nbsp;&nbsp;&nbsp; 
-						<input type="radio" name="delivery_place" value="새로입력" onClick="reset_all()">새로입력 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="delivery_place" value="최근배송지">최근배송지 &nbsp;&nbsp;&nbsp;
+						onClick="restore_all()" value="基本お届け先" checked>基本お届け先 &nbsp;&nbsp;&nbsp; 
+						<input type="radio" name="delivery_place" value="新たに入力" onClick="reset_all()">新たに入力 &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="delivery_place" value="最近のお届け先">最近のお届け先 &nbsp;&nbsp;&nbsp;
 				    </td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">받으실 분</td>
+					<td class="fixed_join">受取人</td>
 					<td><input id="receiver_name" name="receiver_name" type="text" size="40" value="${orderer.member_name }" />
 					   <input type="hidden" id="h_orderer_name" name="h_orderer_name"  value="${orderer.member_name }" /> 
 					   <input type="hidden" id="h_receiver_name" name="h_receiver_name"  value="${orderer.member_name }" />
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">휴대폰번호</td>
+					<td class="fixed_join">携帯番号</td>
 					<td><select id="hp1" name="hp1">
-							<option>없음</option>
+							<option>なし</option>
 							<option value="010" selected>010</option>
 							<option value="011">011</option>
 							<option value="016">016</option>
@@ -602,7 +602,7 @@ function fn_process_pay_order(){
 					         
 				  </tr>
 				<tr class="dot_line">
-					<td class="fixed_join">유선전화(선택)</td>
+					<td class="fixed_join">有線電話(選択)</td>
 					<td><select id="tel1" name="tel1">
 							<option value="02">02</option>
 							<option value="031">031</option>
@@ -635,17 +635,17 @@ function fn_process_pay_order(){
 					<input type="hidden" id="h_tel3" name="h_tel3"value="${orderer.tel3 }" />
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">주소</td>
+					<td class="fixed_join">住所</td>
 					<td><input type="text" id="zipcode" name="zipcode" size="5"
 						value="${orderer.zipcode }"> 
-						<a href="javascript:execDaumPostcode()">우편번호검색</a> <br>
+						<a href="javascript:execDaumPostcode()">郵便番号検索</a> <br>
 						<p>
-							지번 주소:<br>
+							地番住所:<br>
 							<input type="text" id="roadAddress" name="roadAddress" size="50" value="${orderer.roadAddress }" /><br>
-							<br> 도로명 주소: 
+							<br> 道路名住所: 
 							   <input type="text" id="jibunAddress" name="jibunAddress" size="50"
 								              value="${orderer.jibunAddress }" /><br>
-							<br> 나머지 주소: 
+							<br> 残りの住所: 
 							   <input type="text" id="namujiAddress"  name="namujiAddress" size="50"
 								     value="${orderer.namujiAddress }" /> 
 						</p> 
@@ -656,39 +656,39 @@ function fn_process_pay_order(){
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">배송 메시지</td>
+					<td class="fixed_join">配送メッセージ</td>
 					<td>
 					   <input id="delivery_message" name="delivery_message" type="text" size="50"
-						                   placeholder="택배 기사님께 전달할 메시지를 남겨주세요." />
+						                   placeholder="宅配便の運転手さんに伝えるメッセージを残してください。" />
 				     </td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">선물 포장</td>
-					<td><input type="radio" id="gift_wrapping" name="gift_wrapping" value="yes">예
-						&nbsp;&nbsp;&nbsp; <input type="radio"  id="gift_wrapping" name="gift_wrapping" checked value="no">아니요</td>
+					<td class="fixed_join">ギフトラッピング</td>
+					<td><input type="radio" id="gift_wrapping" name="gift_wrapping" value="yes">はい
+						&nbsp;&nbsp;&nbsp; <input type="radio"  id="gift_wrapping" name="gift_wrapping" checked value="no">いいえ</td>
 				</td>
 			</tboby>
 		</table>
 	</div>
 	<div >
 	  <br><br>
-	   <h2>주문고객</h2>
+	   <h2>注文客</h2>
 		 <table>
 		   <tbody>
 			 <tr class="dot_line">
-				<td ><h2>이름</h2></td>
+				<td ><h2>お名前</h2></td>
 				<td>
 				 <input  type="text" value="${orderer.member_name}" size="15" />
 				</td>
 			  </tr>
 			  <tr class="dot_line">
-				<td ><h2>핸드폰</h2></td>
+				<td ><h2>携帯電話</h2></td>
 				<td>
 				 <input  type="text" value="${orderer.hp1}-${orderer.hp2}-${orderer.hp3}" size="15" />
 				</td>
 			  </tr>
 			  <tr class="dot_line">
-				<td ><h2>이메일</h2></td>
+				<td ><h2>Eメール</h2></td>
 				<td>
 				 <input  type="text" value="${orderer.email1}@${orderer.email2}" size="15" />
 				</td>
@@ -702,37 +702,30 @@ function fn_process_pay_order(){
 	<br>
 
 
-	<H1>3.할인 정보</H1>
+	<H1>3.割引情報</H1>
 	<div class="detail_table">
 		<table>
 			<tbody>
 				<tr class="dot_line">
-					<td width=100>적립금</td>
-					<td><input name="discount_juklip" type="text" size="10" />원/1000원
-						&nbsp;&nbsp;&nbsp; <input type="checkbox" /> 모두 사용하기</td>
+					<td width=100>積立金</td>
+					<td><input name="discount_juklip" type="text" size="10" />円/100円
+						&nbsp;&nbsp;&nbsp; <input type="checkbox" /> 使い切り</td>
 				</tr>
 				<tr class="dot_line">
-					<td>예치금</td>
-					<td><input name="discount_yechi" type="text" size="10" />원/1000원
-						&nbsp;&nbsp;&nbsp; <input type="checkbox" /> 모두 사용하기</td>
+					<td>預かり金</td>
+					<td><input name="discount_yechi" type="text" size="10" />>円/100円
+						&nbsp;&nbsp;&nbsp; <input type="checkbox" /> 使い切り</td>
 				</tr>
+		
 				<tr class="dot_line">
-					<td>상품권 전환금</td>
-					<td cellpadding="5"><input name="discount_sangpum" type="text"
-						size="10" />원/0원 &nbsp;&nbsp;&nbsp; <input type="checkbox" /> 모두
-						사용하기</td>
-				</tr>
-				<tr class="dot_line">
-					<td>OK 캐쉬백 포인트</td>
+					<td>　キャッシュバックポイント</td>
 					<td cellpadding="5"><input name="discount_okcashbag" type="text"
-						size="10" />원/0원 &nbsp;&nbsp;&nbsp; <input type="checkbox" /> 모두
-						사용하기</td>
+						size="10" />円/0円 &nbsp;&nbsp;&nbsp; <input type="checkbox" /> 使い切り</td>
 				</tr>
 				<tr class="dot_line">
-					<td>쿠폰할인</td>
+					<td>クーポン割引</td>
 					<td cellpadding="5"><input name="discount_coupon" type="text"
-						size="10" />원/0원 &nbsp;&nbsp;&nbsp; <input type="checkbox" /> 모두
-						사용하기</td>
+						size="10" />円/0円 &nbsp;&nbsp;&nbsp; <input type="checkbox" /> 使い切り</td>
 				</tr>
 			</tbody>
 		</table>
@@ -743,40 +736,40 @@ function fn_process_pay_order(){
 	<table width=80% class="list_view" style="background: #ccffff">
 		<tbody>
 			<tr align=center class="fixed">
-				<td class="fixed">총 상품수</td>
-				<td>총 상품금액</td>
+				<td class="fixed">総商品数</td>
+				<td>総賞品金額</td>
 				<td></td>
-				<td>총 배송비</td>
+				<td>総配送料</td>
 				<td></td>
-				<td>총 할인 금액</td>
+				<td>総割引金額</td>
 				<td></td>
-				<td>최종 결제금액</td>
+				<td>最終決済金額</td>
 			</tr>
 			<tr cellpadding=40 align=center>
 				<td id="">
-					<p id="p_totalNum">${total_order_goods_qty}개</p> 
+					<p id="p_totalNum">${total_order_goods_qty}個</p> 
 					<input id="h_total_order_goods_qty" type="hidden" value="${total_order_goods_qty}" />
 				</td>
 				<td>
-					<p id="p_totalPrice">${total_order_price}원</p> <input
+					<p id="p_totalPrice">${total_order_price}円</p> <input
 					id="h_totalPrice" type="hidden" value="${total_order_price}" />
 				</td>
 				<td><IMG width="25" alt=""
 					src="${pageContext.request.contextPath}/resources/image/plus.jpg"></td>
 				<td>
-					<p id="p_totalDelivery">${total_delivery_price }원</p> <input
+					<p id="p_totalDelivery">${total_delivery_price }円</p> <input
 					id="h_totalDelivery" type="hidden" value="${total_delivery_price}" />
 				</td>
 				<td>
 				<img width="25" alt="" 	src="${pageContext.request.contextPath}/resources/image/minus.jpg"></td>
 				<td>
-					<p id="p_totalSalesPrice">${total_discount_price }원</p> 
+					<p id="p_totalSalesPrice">${total_discount_price }円</p> 
 					<input id="h_total_sales_price" type="hidden" value="${total_discount_price}" />
 				</td>
 				<td><img width="25" alt="" src="${pageContext.request.contextPath}/resources/image/equal.jpg"></td>
 				<td>
 					<p id="p_final_totalPrice">
-						<font size="15">${final_total_order_price }원 </font>
+						<font size="15">${final_total_order_price }円 </font>
 					</p> <input id="h_final_total_Price" type="hidden" value="${final_total_order_price}" />
 				</td>
 			</tr>
@@ -786,61 +779,61 @@ function fn_process_pay_order(){
 	<br>
 	<br>
 	<br>
-	<h1>4.결제정보</h1>
+	<h1>4.決済情報</h1>
 	<div class="detail_table">
 		<table>
 			<tbody>
 				<tr >
 					<td>
-					   <input type="radio" id="pay_method" name="pay_method" value="신용카드"   onClick="fn_pay_card()" checked>신용카드 &nbsp;&nbsp;&nbsp; 
-					   <input type="radio" id="pay_method" name="pay_method" value="제휴 신용카드"  >제휴 신용카드 &nbsp;&nbsp;&nbsp; 
-					   <input type="radio" id="pay_method" name="pay_method" value="실시간 계좌이체">실시간 계좌이체 &nbsp;&nbsp;&nbsp;
-					   <input type="radio" id="pay_method" name="pay_method" value="무통장 입금">무통장 입금 &nbsp;&nbsp;&nbsp;
+					   <input type="radio" id="pay_method" name="pay_method" value="クレジットカード"   onClick="fn_pay_card()" checked>クレジットカード &nbsp;&nbsp;&nbsp; 
+					   <input type="radio" id="pay_method" name="pay_method" value="提携クレジットカード"  >提携クレジットカード &nbsp;&nbsp;&nbsp; 
+					   <input type="radio" id="pay_method" name="pay_method" value="リアルタイム口座振替">リアルタイム口座振替 &nbsp;&nbsp;&nbsp;
+					   <input type="radio" id="pay_method" name="pay_method" value="振込">振込 &nbsp;&nbsp;&nbsp;
 					</td>
 				</tr>
 				<tr >
 					<td>
-					   <input type="radio" id="pay_method" name="pay_method" value="휴대폰결제" onClick="fn_pay_phone()">휴대폰 결제 &nbsp;&nbsp;&nbsp;
-					   <input type="radio" id="pay_method" name="pay_method" value="카카오페이(간편결제)">카카오페이(간편결제) &nbsp;&nbsp;&nbsp; 
-					   <input type="radio" id="pay_method" name="pay_method" value="페이나우(간편결제)">페이나우(간편결제) &nbsp;&nbsp;&nbsp; 
-					   <input type="radio" id="pay_method" name="pay_method" value="페이코(간편결제)">페이코(간편결제) &nbsp;&nbsp;&nbsp;
+					   <input type="radio" id="pay_method" name="pay_method" value="携帯決済" onClick="fn_pay_phone()">携帯決済 &nbsp;&nbsp;&nbsp;
+					   <input type="radio" id="pay_method" name="pay_method" value="LINEペイ">LINEペイ &nbsp;&nbsp;&nbsp; 
+					   <input type="radio" id="pay_method" name="pay_method" value="ペイナウ">ペイナウ &nbsp;&nbsp;&nbsp; 
+					   <input type="radio" id="pay_method" name="pay_method" value="PAYCO">PAYCO &nbsp;&nbsp;&nbsp;
 					</td>
 				</tr>
 				<tr >
 					<td>
-					   <input type="radio"  id="pay_method" name="pay_method" value="직접입금">직접입금&nbsp;&nbsp;&nbsp;
+					   <input type="radio"  id="pay_method" name="pay_method" value="直接入金">直接入金&nbsp;&nbsp;&nbsp;
 					</td>
 				</tr>
 				<tr id="tr_pay_card">
 					<td>
-					  <strong>카드 선택<strong>:&nbsp;&nbsp;&nbsp;
+					  <strong>カード選択<strong>:&nbsp;&nbsp;&nbsp;
 					  <select id="card_com_name" name="card_com_name">
-							<option value="삼성" selected>삼성</option>
-							<option value="하나SK">하나SK</option>
-							<option value="현대">현대</option>
+							<option value="SAMSUNG" selected>SAMSUNG</option>
+							<option value="HANA SK">HANA SK</option>
+							<option value="HYANDAI">HYANDAI</option>
 							<option value="KB">KB</option>
-							<option value="신한">신한</option>
-							<option value="롯데">롯데</option>
+							<option value="SHINHAN">SHINHAN</option>
+							<option value="LOTTE">LOTTE</option>
 							<option value="BC">BC</option>
-							<option value="시티">시티</option>
-							<option value="NH농협">NH농협</option>
+							<option value="CITY">CITY</option>
+							<option value="NH">NH</option>
 					</select>
 					<br><Br>
-					<strong>할부 기간:<strong>  &nbsp;&nbsp;&nbsp;
+					<strong>割賦期間:<strong>  &nbsp;&nbsp;&nbsp;
 					<select id="card_pay_month" name="card_pay_month">
-							<option value="일시불" selected>일시불</option>
-							<option value="2개월">2개월</option>
-							<option value="3개월">3개월</option>
-							<option value="4개월">4개월</option>
-							<option value="5개월">5개월</option>
-							<option value="6개월">6개월</option>
+							<option value="一括払い" selected>一括払い</option>
+							<option value="2か月">2か月</option>
+							<option value="3か月">3か月</option>
+							<option value="4か月">4か月</option>
+							<option value="5か月">5か月</option>
+							<option value="6か月">6か月</option>
 					</select>
 					
 					</td>
 				</tr>
 				<tr id="tr_pay_phone" style="visibility:hidden">
 				  <td>
-				  <strong>휴대폰 번호 입력: <strong>
+				  <strong>携帯番号入力: <strong>
 				  	       <input  type="text" size="5" value=""  id="pay_order_tel1" name="pay_order_tel1" />-
 				           <input  type="text" size="5" value="" id="pay_order_tel2" name="pay_order_tel2" />-
 				           <input  type="text" size="5" value="" id="pay_order_tel3" name="pay_order_tel3" />
@@ -857,9 +850,9 @@ function fn_process_pay_order(){
 	<center>
 		<br>
 		<br> <a href="javascript:fn_show_order_detail();"> 
-		<img width="125" alt="" src="${contextPath}/resources/image/btn_gulje.jpg">
+		  <input name="btn_cancel_member" type="button"  value="決済する">
 		</a> <a href="${contextPath}/main/main.do"> 
-		   <img width="75" alt="" src="${contextPath}/resources/image/btn_shoping_continue.jpg">
+		     <input name="btn_cancel_member" type="button"  value="ずっとショッピングする">
 		</a>
 	
 <div class="clear"></div>		
@@ -872,68 +865,68 @@ function fn_process_pay_order(){
 			</a> 
 			<br/> 
 			  <div class="detail_table">
-			  <h1>최종 주문 사항</h1>
+			  <h1>最終注文事項</h1>
 			<table>
 				<tbody align=left>
 				 	<tr>
 					  <td width=200px>
-					      주문상품번호:
+					      注文商品番号:
 					 </td>
 					 <td>
-						 <p id="p_order_goods_id"> 주문번호 </p>    
+						 <p id="p_order_goods_id"> 注文番号 </p>    
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					      주문상품명:
+					       注文商品名:
 					 </td>
 					 <td>
-						  <p id="p_order_goods_title"> 주문 상품명 </p>    
+						  <p id="p_order_goods_title"> 注文商品名 </p>    
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					      주문상품개수:
+					      注文商品個数:
 					 </td>
 					 <td>
-						  <p id="p_total_order_goods_qty"> 주문 상품개수 </p>    
+						  <p id="p_total_order_goods_qty"> 注文商品個数</p>    
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     주문금액합계:
+					     注文金額の合計:
 					 </td>
 					 <td >
-					      <p id="p_total_order_goods_price">주문금액합계</p>
+					      <p id="p_total_order_goods_price">注文金額の合計</p>
 					 </td>
 				   </tr>
 					<tr>
 					  <td width=200px>
-					     주문자:
+					     注文者:
 					 </td>
 					 <td>
-					      <p id="p_orderer_name"> 주문자 이름</p>
+					      <p id="p_orderer_name">注文者名前</p>
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     받는사람:
+					     受取人:
 					 </td>
 					 <td>
-					      <p id="p_receiver_name">받는사람이름</p>
+					      <p id="p_receiver_name">受取人名前</p>
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     배송방법:
+					     配送方法:
 					 </td>
 					 <td>
-					      <p id="p_delivery_method">배송방법</p>
+					      <p id="p_delivery_method">配送方法</p>
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     받는사람 휴대폰번호:
+					    受取人の携帯番号:
 					 </td>
 					 <td>
 					      <p id="p_receiver_hp_num"></p>
@@ -941,47 +934,47 @@ function fn_process_pay_order(){
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     받는사람 유선번화번호:
+					     受取人有線電話:
 					 </td>
 					 <td>
-					      <p id="p_receiver_tel_num">배송방법</p>
+					      <p id="p_receiver_tel_num">配送方法</p>
 					 </td>
 				   </tr>
 				   <tr>
-					  <td width=200px>
-					     배송주소:
+ <td width=200px>
+					     配送先住所:
 					 </td>
 					 <td align=left>
-					      <p id="p_delivery_address">배송주소</p>
+					      <p id="p_delivery_address">配送先住所</p>
 					 </td>
 				   </tr>
 				    <tr>
 					  <td width=200px>
-					     배송메시지:
+					     配送メッセージ:
 					 </td>
 					 <td align=left>
-					      <p id="p_delivery_message">배송메시지</p>
+					      <p id="p_delivery_message">配送メッセージ</p>
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     선물포장 여부:
+					    ギフトラッピングの有無:
 					 </td>
 					 <td align=left>
-					      <p id="p_gift_wrapping">선물포장</p>
+					      <p id="p_gift_wrapping">ギフトラッピング</p>
 					 </td>
 				   </tr>
 				   <tr>
 					  <td width=200px>
-					     결제방법:
+					     決済方法:
 					 </td>
 					 <td align=left>
-					      <p id="p_pay_method">결제방법</p>
+					      <p id="p_pay_method">決済方法</p>
 					 </td>
 				   </tr>
 				   <tr>
 				    <td colspan=2 align=center>
-				    <input  name="btn_process_pay_order" type="button" onClick="fn_process_pay_order()" value="최종결제하기">
+				    <input  name="btn_process_pay_order" type="button" onClick="fn_process_pay_order()" value="最終決済">
 				    </td>
 				   </tr>
 				</tbody>

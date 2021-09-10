@@ -89,14 +89,14 @@ function  calcPeriod(search_period){
 </script>
 </head>
 <body>
-	<H3>상품 조회</H3>
+	<H3>商品照会</H3>
 	<form  method="post">	
 		<TABLE cellpadding="10" cellspacing="10"  >
 			<TBODY>
 				<TR >
 					<TD>
-						<input type="radio" name="r_search"  checked/> 등록일로조회 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="r_search" />상세조회 &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="r_search"  checked/> 登録日照会 &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="r_search" />詳細照会 &nbsp;&nbsp;&nbsp;
 					</TD>
 				</TR>
 				<TR >
@@ -112,7 +112,7 @@ function  calcPeriod(search_period){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>
-					</select>년 <select name="curMonth" >
+					</select>年 <select name="curMonth" >
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
 					        <c:when test="${endMonth==i }">
@@ -123,7 +123,7 @@ function  calcPeriod(search_period){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>					
-					</select>월
+					</select>月
 					
 					 <select name="curDay">
 					  <c:forEach   var="i" begin="1" end="31">
@@ -136,52 +136,31 @@ function  calcPeriod(search_period){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>	
-					</select>일  &nbsp;이전&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a href="javascript:search_goods_list('today')">
-					   <img   src="${contextPath}/resources/image/btn_search_one_day.jpg">
-					</a>
-					<a href="javascript:search_goods_list('one_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_week.jpg">
-					</a>
-					<a href="javascript:search_goods_list('two_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_week.jpg">
-					</a>
-					<a href="javascript:search_goods_list('one_month')">
-					   <img   src="${pageContext.request.contextPath}/resources/image/btn_search_1_month.jpg">
-					</a>
-					<a href="javascript:search_goods_list('two_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_month.jpg">
-					</a>
-					<a href="javascript:search_goods_list('three_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_3_month.jpg">
-					</a>
-					<a href="javascript:search_goods_list('four_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_4_month.jpg">
-					</a>
-					&nbsp;까지 조회
+					</select>日  以前&nbsp;&nbsp;&nbsp;&nbsp; 
+
 					</TD>
 				</TR>
 				<tr>
 				  <td>
 				    <select name="search_condition" disabled >
-						<option value="전체" checked>전체</option>
-						<option value="제품번호">상품번호</option>
-						<option value="제품이름">상품이름</option>
-						<option value="제조사">제조사</option>
+						<option value="全体" checked>全体</option>
+						<option value="製品番号">製品番号</option>
+						<option value="製品名">製品名</option>
+						<option value="メーカー">メーカー</option>
 					</select>
 					<input  type="text"  size="30"  disabled/>  
-					<input   type="button"  value="조회" disabled/>
+					<input   type="button"  value="照会" disabled/>
 				  </td>
 				</tr>
 				<tr>
 				  <td>
-					조회한 기간:<input  type="text"  size="4" value="${beginYear}" />년
-							<input  type="text"  size="4" value="${beginMonth}"/>월	
-							 <input  type="text"  size="4" value="${beginDay}"/>일	
+					照会した期間:<input  type="text"  size="4" value="${beginYear}" />年
+							<input  type="text"  size="4" value="${beginMonth}"/>月
+							 <input  type="text"  size="4" value="${beginDay}"/>日
 							 &nbsp; ~
-							<input  type="text"  size="4" value="${endYear }" />년 
-							<input  type="text"  size="4" value="${endMonth }"/>월	
-							 <input  type="text"  size="4" value="${endDay }"/>일							 
+							<input  type="text"  size="4" value="${endYear }" />年
+							<input  type="text"  size="4" value="${endMonth }"/>月	
+							 <input  type="text"  size="4" value="${endDay }"/>日						 
 				  </td>
 				</tr>
 			</TBODY>
@@ -193,19 +172,19 @@ function  calcPeriod(search_period){
 <TABLE class="list_view">
 		<TBODY align=center >
 			<tr style="background:#33ff00" >
-				<td>상품번호</td>
-				<td>상품이름</td>
-				<td>저자</td>
-				<td>출판사</td>
-				<td>상품가격</td>
-				<td>입고일자</td>
-				<td>출판일</td>
+<td>商品番号<td>
+<td>商品名<td>
+<td>著者<td>
+<td>出版社<td>
+<td>商品価格<td>
+<td>入庫日時<td>
+<td>出版日<td>
 			</tr>
    <c:choose>
      <c:when test="${empty newGoodsList }">			
 			<TR>
 		       <TD colspan=8 class="fixed">
-				  <strong>조회된 상품이 없습니다.</strong>
+				  <strong>照会された商品がありません。</strong>
 			   </TD>
 		     </TR>
 	 </c:when>
@@ -261,10 +240,10 @@ function  calcPeriod(search_period){
 	</TABLE>
 	<DIV class="clear"></DIV>
 	<br><br><br>
-<H3>상품등록하기</H3>
+<H3>商品登録する</H3>
 <DIV id="search">
 	<form action="${contextPath}/admin/goods/addNewGoodsForm.do">
-		<input   type="submit" value="상품 등록하기">
+		<input   type="submit" value="商品登録する">
 	</form>
 </DIV>
 </body>

@@ -5,17 +5,17 @@
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 </head>
 <BODY>
-	<H1>1.최종 주문 내역서</H1>
+	<H1>1.最終注文内訳書</H1>
 	<TABLE class="list_view">
 		<TBODY align=center>
 			<tr style="background: #33ff00">
-			     <td>주문번호 </td>
-				<td colspan=2 class="fixed">주문상품명</td>
-				<td>수량</td>
-				<td>주문금액</td>
-				<td>배송비</td>
-				<td>예상적립금</td>
-				<td>주문금액합계</td>
+			     <td>注文番号 </td>
+				<td colspan=2 class="fixed">注文商品名</td>
+				<td>製品数量</td>
+				<td>注文金額</td>
+				<td>配送料</td>
+				<td>予想積立金</td>
+				<td>注文金額の合計</td>
 			</tr>
 			<TR>
 				<c:forEach var="item" items="${myOrderList }">
@@ -31,13 +31,13 @@
 					  </h2>
 					</TD>
 					<td>
-					  <h2>${item.order_goods_qty }개<h2>
+					  <h2>${item.order_goods_qty }個<h2>
 					</td>
-					<td><h2>${item.order_goods_qty *item.goods_sales_price}원 (10% 할인)</h2></td>
-					<td><h2>0원</h2></td>
-					<td><h2>${1500 *item.order_goods_qty }원</h2></td>
+					<td><h2>${item.order_goods_qty *item.goods_sales_price}円 (10% 割引)</h2></td>
+					<td><h2>0円</h2></td>
+					<td><h2>${1500 *item.order_goods_qty }円</h2></td>
 					<td>
-					  <h2>${item.order_goods_qty *item.goods_sales_price}원</h2>
+					  <h2>${item.order_goods_qty *item.goods_sales_price}円</h2>
 					</td>
 			</TR>
 			</c:forEach>
@@ -47,30 +47,30 @@
 <form  name="form_order">
 	<br>
 	<br>
-	<H1>2.배송지 정보</H1>
+	<H1>2.お届け先情報</H1>
 	<DIV class="detail_table">
 	
 		<TABLE>
 			<TBODY>
 				<TR class="dot_line">
-					<TD class="fixed_join">배송방법</TD>
+					<TD class="fixed_join">配送方法</TD>
 					<TD>
 					   ${myOrderInfo.delivery_method }
 				    </TD>
 				</TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">받으실 분</TD>
+					<TD class="fixed_join">受取人</TD>
 					<TD>
 					${myOrderInfo.receiver_name }
 					</TD>
 				</TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">휴대폰번호</TD>
+					<TD class="fixed_join">携帯番号</TD>
 					<TD>
 					  ${myOrderInfo.receiver_hp1}-${myOrderInfo.receiver_hp2}-${myOrderInfo.receiver_hp3}</TD>
 				  </TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">유선전화(선택)</TD>
+					<TD class="fixed_join">有線電話(選択)</TD>
 					<TD>
 					   ${myOrderInfo.receiver_tel1}-${myOrderInfo.receiver_tel2}-${myOrderInfo.receiver_tel3}</TD>
 					</TD>
@@ -78,19 +78,19 @@
 
 
 				<TR class="dot_line">
-					<TD class="fixed_join">주소</TD>
+					<TD class="fixed_join">住所</TD>
 					<td>
 					   ${myOrderInfo.delivery_address}
 					</td>>
 				</TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">배송 메시지</TD>
+					<TD class="fixed_join">配送メッセージ</TD>
 					<TD>
 					${myOrderInfo.delivery_message}
 					</TD>
 				</TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">선물 포장</TD>
+					<TD class="fixed_join">ギフトラッピング</TD>
 					<td>
 					${myOrderInfo.gift_wrapping}
 					</td>
@@ -101,23 +101,23 @@
 	</DIV>
 	<div >
 	  <br><br>
-	   <h2>주문고객</h2>
+	   <h2>注文客</h2>
 		 <table >
 		   <TBODY>
 			 <tr class="dot_line">
-				<td ><h2>이름</h2></td>
+				<td ><h2>名前</h2></td>
 				<td>
 				 <input  type="text" value="${orderer.member_name}" size="15" disabled />
 				</td>
 			  </tr>
 			  <tr class="dot_line">
-				<td ><h2>핸드폰</h2></td>
+				<td ><h2>携帯電話</h2></td>
 				<td>
 				 <input  type="text" value="${orderer.hp1}-${orderer.hp2}-${orderer.hp3}" size="15" disabled />
 				</td>
 			  </tr>
 			  <tr class="dot_line">
-				<td ><h2>이메일</h2></td>
+				<td ><h2>Eメール</h2></td>
 				<td>
 				   <input  type="text" value="${orderer.email1}@${orderer.email2}" size="15" disabled />
 				</td>
@@ -129,24 +129,24 @@
 	<br>
 	<br>
 	<br>
-	<H1>3.결제정보</H1>
+	<H1>3.決済情報</H1>
 	<DIV class="detail_table">
 		<table>
 			<TBODY>
 				<TR class="dot_line">
-					<TD class="fixed_join">결제방법</TD>
+					<TD class="fixed_join">決済方法</TD>
 					<TD>
 					   ${myOrderInfo.pay_method }
 				    </TD>
 				</TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">결제카드</TD>
+					<TD class="fixed_join">決済カード</TD>
 					<TD>
 					   ${myOrderInfo.card_com_name}
 				    </TD>
 				</TR>
 				<TR class="dot_line">
-					<TD class="fixed_join">할부기간</TD>
+					<TD class="fixed_join">割賦期間</TD>
 					<TD>
 					   ${myOrderInfo.card_pay_month }
 				    </TD>
@@ -163,7 +163,7 @@
 		<br>
 		<br> 
 		<a href="${contextPath}/main/main.do"> 
-		   <IMG width="75" alt="" src="${contextPath}/resources/image/btn_shoping_continue.jpg">
+		    <input name="btn_cancel_member" type="button"  value="ずっとショッピングする">
 		</a>
 <DIV class="clear"></DIV>		
 	

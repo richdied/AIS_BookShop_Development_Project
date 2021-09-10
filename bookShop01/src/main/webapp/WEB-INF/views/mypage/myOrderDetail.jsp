@@ -5,7 +5,7 @@
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 </head>
 <body>
-	<h1>1. 주문 상세정보</h1>
+	<h1>1. 注文詳細情報</h1>
 	<table class="list_view">
 		<tbody align=center>
 			<tr style="background: #33ff00">

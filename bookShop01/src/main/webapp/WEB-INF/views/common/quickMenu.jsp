@@ -74,25 +74,25 @@ function goodsDetail(){
     <div id="sticky" >
 	<ul>
 		<li><a href="#">
-		   <img	width="24" height="24" src="${contextPath}/resources/image/facebook_icon.png">
-				페이스북
+		   <img	width="20" height="20" src="${contextPath}/resources/image/facebook_icon.png">
+				フェイスブック
 		</a></li>
 		<li><a href="#">
-		   <img width="24" height="24" src="${contextPath}/resources/image/twitter_icon.png">
-			트위터
+		   <img width="20" height="20" src="${contextPath}/resources/image/twitter_icon.png">
+			ツイッター
 		</a></li>
 		<li><a href="#">
-		   <img	width="24" height="24" src="${contextPath}/resources/image/rss_icon.png">
-				RSS 피드
+		   <img	width="20" height="20" src="${contextPath}/resources/image/rss_icon.png">
+				RSSフィード
 		 </a></li>
 	</ul>
 	<div class="recent">
-		<h3>최근 본 상품</h3>
+		<h3>最近見た商品</h3>
 		  <ul>
 		<!--   상품이 없습니다. -->
 		 <c:choose>
 			<c:when test="${ empty quickGoodsList }">
-				     <strong>상품이 없습니다.</strong>
+				     <strong>商品がありません。</strong>
 			</c:when>
 			<c:otherwise>
 	       <form name="frm_sticky"  >	        
@@ -124,7 +124,7 @@ function goodsDetail(){
 		    <h5>  &nbsp; &nbsp; &nbsp; &nbsp;  0/0  &nbsp; </h5>
 	    </c:when>
 	    <c:otherwise>
-           <h5><a  href='javascript:fn_show_previous_goods();'> 이전 </a> &nbsp;  <span id="cur_goods_num">1</span>/${quickGoodsListNum}  &nbsp; <a href='javascript:fn_show_next_goods();'> 다음 </a> </h5>
+           <h5><a  href='javascript:fn_show_previous_goods();'> 以前 </a> &nbsp;  <span id="cur_goods_num">1</span>/${quickGoodsListNum}  &nbsp; <a href='javascript:fn_show_next_goods();'> 次 </a> </h5>
        </c:otherwise>
        </c:choose>
     </div>

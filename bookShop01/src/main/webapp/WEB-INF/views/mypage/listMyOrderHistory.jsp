@@ -21,7 +21,7 @@ function search_order_history(fixedSearchPeriod){
 }
 
 function fn_cancel_order(order_id){
-	var answer=confirm("주문을 취소하시겠습니까?");
+	var answer=confirm("注文をキャンセルしますか。");
 	if(answer==true){
 		var formObj=document.createElement("form");
 		var i_order_id = document.createElement("input"); 
@@ -40,15 +40,15 @@ function fn_cancel_order(order_id){
 </script>
 </head>
 <body>
-	<H3>주문 배송 조회</H3>
+	<H3>注文配送照会</H3>
 	<form  method="post">	
 		<table>
 			<tbody>
 				<tr>
 					<td>
-						<input type="radio" name="simple"  checked/> 간단조회 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="simple" /> 일간  &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="simple" /> 월간
+						<input type="radio" name="simple"  checked/> 簡単照会 &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="simple" /> 近日  &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="simple" /> 月間
 					</td>
 				</tr>
 				<tr>
@@ -75,7 +75,7 @@ function fn_cancel_order(order_id){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>					
-					</select>월
+					</select>月
 					
 					 <select name="curDay">
 					  <c:forEach   var="i" begin="1" end="31">
@@ -88,52 +88,31 @@ function fn_cancel_order(order_id){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>	
-					</select>일  &nbsp;이전&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a href="javascript:search_order_history('today')">
-					   <img   src="${contextPath}/resources/image/btn_search_one_day.jpg">
-					</a>
-					<a href="javascript:search_order_history('one_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_week.jpg">
-					</a>
-					<a href="javascript:search_order_history('two_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_week.jpg">
-					</a>
-					<a href="javascript:search_order_history('one_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('two_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('three_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_3_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('four_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_4_month.jpg">
-					</a>
-					&nbsp;까지 조회
+					</select>日  &nbsp;以前&nbsp;&nbsp;&nbsp;&nbsp; 
+					
 					</td>
 				</tr>
 				<tr>
 				  <td>
 				    <select name="search_condition">
-						<option value="2015" checked>전체</option>
-						<option value="2014">수령자</option>
-						<option value="2013">주문자</option>
-						<option value="2012">주문번호</option>
+						<option value="2015" checked>全体</option>
+						<option value="2014">受領者</option>
+						<option value="2013">注文者</option>
+						<option value="2012">注文番号</option>
 					</select>
 					<input  type="text"  size="30" />  
-					<input   type="button"  value="조회"/>
+					<input   type="button"  value="照会"/>
 				  </td>
 				</tr>
 				<tr>
 				  <td>
-					조회한 기간:<input  type="text"  size="4" value="${beginYear}" />년
-							<input  type="text"  size="4" value="${beginMonth}"/>월	
-							 <input  type="text"  size="4" value="${beginDay}"/>일	
+					照会した期間:<input  type="text"  size="4" value="${beginYear}" />年
+							<input  type="text"  size="4" value="${beginMonth}"/>月
+							 <input  type="text"  size="4" value="${beginDay}"/>日
 							 &nbsp; ~
-							<input  type="text"  size="4" value="${endYear}" />년 
-							<input  type="text"  size="4" value="${endMonth}"/>월	
-							 <input  type="text"  size="4" value="${endDay}"/>일							 
+							<input  type="text"  size="4" value="${endYear}" />年
+							<input  type="text"  size="4" value="${endMonth}"/>月
+							 <input  type="text"  size="4" value="${endDay}"/>日						 
 				  </td>
 				</tr>
 			</tbody>
@@ -145,20 +124,20 @@ function fn_cancel_order(order_id){
 <table class="list_view">
 		<tbody align=center >
 			<tr style="background:#33ff00" >
-				<td class="fixed" >주문번호</td>
-				<td class="fixed">주문일자</td>
-				<td>주문내역</td>
-				<td>주문금액/수량</td>
-				<td>주문상태</td>
-				<td>주문자</td>
-				<td>수령자</td>
-				<td>주문취소</td>
+				<td class="fixed" >注文番号</td>
+				<td class="fixed">注文日付</td>
+				<td>注文内訳</td>
+				<td>注文金額</td>
+				<td>注文状態</td>
+				<td>注文者</td>
+				<td>受領者</td>
+				<td>注文取り消し</td>
 			</tr>
    <c:choose>
      <c:when test="${empty myOrderHistList }">			
 			<tr>
 		       <td colspan=8 class="fixed">
-				  <strong>주문한 상품이 없습니다.</strong>
+				  <strong>注文した商品がありません。</strong>
 			   </td>
 		     </tr>
 	 </c:when>
@@ -186,7 +165,7 @@ function fn_cancel_order(order_id){
 				   <strong>
 				      <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
 				          <c:if  test="${item.order_id ==item2.order_id}" >
-				             ${item.goods_sales_price*item.order_goods_qty }원/${item.order_goods_qty }<br>
+				             ${item.goods_sales_price*item.order_goods_qty }円/${item.order_goods_qty }<br>
 				         </c:if>   
 					 </c:forEach>
 				   </strong>
@@ -195,19 +174,19 @@ function fn_cancel_order(order_id){
 				  <strong>
 				    <c:choose>
 					    <c:when test="${item.delivery_state=='delivery_prepared' }">
-					       배송준비중
+					       配送準備中
 					    </c:when>
 					    <c:when test="${item.delivery_state=='delivering' }">
-					       배송중
+					       配送中
 					    </c:when>
 					    <c:when test="${item.delivery_state=='finished_delivering' }">
-					       배송완료
+					   　　 配送済み
 					    </c:when>
 					    <c:when test="${item.delivery_state=='cancel_order' }">
-					       주문취소
+					       注文取り消し
 					    </c:when>
 					    <c:when test="${item.delivery_state=='returning_goods' }">
-					       반품
+					       返品
 					    </c:when>
 				  </c:choose>
 				  </strong>
@@ -221,10 +200,10 @@ function fn_cancel_order(order_id){
 				<td>
 			     <c:choose>
 			   <c:when test="${item.delivery_state=='delivery_prepared'}">
-			       <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="주문취소"  />
+			       <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="注文取り消し"  />
 			   </c:when>
 			   <c:otherwise>
-			      <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="주문취소" disabled />
+			      <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="注文取り消し" disabled />
 			   </c:otherwise>
 			  </c:choose>
 			    </td>

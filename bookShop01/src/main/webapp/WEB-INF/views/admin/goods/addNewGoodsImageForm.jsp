@@ -4,12 +4,12 @@
 
 
 <body>
-	<h1>새제품 이미지 등록창</h1>
+	<h1>新製品のイメージ登録ウィンドウ</h1>
 	<br>
 	<form action="${pageContext.request.contextPath}/admin/goods/addNewGoods.do" method="post"	enctype="multipart/form-data">
 	<table  cellspacing="0" cellpadding="0">
 		<tr>
-			<td>메인 이미지</td>
+			<td>メイン·イメージ</td>
 			<td>
 				<input type="file" name="main_image"><br>
 			</td>
@@ -20,7 +20,7 @@
 		 </td>
 		</tr>
 		<tr>
-			<td>상세 이미지1</td>
+			<td>詳細イメージ1</td>
 			<td>
 				<input type="file" name="detail_image1"><br>
 			</td>
@@ -31,7 +31,7 @@
 		 </td>
 		</tr>
 		<tr>
-			<td>상세 이미지2:</td>
+			<td>詳細イメージ2:</td>
 			<td>
 				<input type="file" name="detail_image2"><br>
 			</td>
@@ -42,7 +42,7 @@
 		 </td>
 		</tr>
 		<tr>
-			<td>상세 이미지3:</td>
+			<td>詳細イメージ3:</td>
 			<td>
 				<input type="file" name="detail_image3"><br>
 			</td>
@@ -56,9 +56,8 @@
 		<tr colspan=2 >
 			<td >
 			  <br>
-			   <input	type="submit" value="제품 이미지 등록하기">
+			   <input	type="submit" value="製品画像を登録する">
 			</td>
 		</tr>
 	</table>
 </form>
-

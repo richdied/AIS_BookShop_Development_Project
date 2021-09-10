@@ -15,36 +15,34 @@ window.onload=function()
 }
 
 function result(){
-	alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
+	alert("IDやパスワードが違います。 もう一度ログインしてください。");
 }
 </script>
 </c:if>
 </head>
 <body>
-	<H3>회원 로그인 창</H3>
+	<H3>会員ログインウィンドウ</H3>
 	<DIV id="detail_table">
 	<form action="${contextPath}/member/login.do" method="post">
 		<TABLE>
 			<TBODY>
 				<TR class="dot_line">
-					<TD class="fixed_join">아이디</TD>
+					<TD class="fixed_join">ID</TD>
 					<TD><input name="member_id" type="text" size="20" /></TD>
 				</TR>
 				<TR class="solid_line">
-					<TD class="fixed_join">비밀번호</TD>
+					<TD class="fixed_join">パスワード</TD>
 					<TD><input name="member_pw" type="password" size="20" /></TD>
 				</TR>
 			</TBODY>
 		</TABLE>
 		<br><br>
-		<INPUT	type="submit" value="로그인"> 
-		<INPUT type="button" value="초기화">
+		<INPUT	type="submit" value="ログイン"> 
 		
 		<Br><br>
-		   <a href="#">아이디 찾기</a>  | 
-		   <a href="#">비밀번호 찾기</a> | 
-		   <a href="${contextPath}/member/addMember.do">회원가입</a>    | 
-		   <a href="#">고객 센터</a>
+		   <a href="#">ID検索</a>  | 
+		   <a href="#">パスワード検索</a> | 
+		   <a href="${contextPath}/member/addMember.do">新規会員登録</a>    | 
 					   
 	</form>		
 </body>

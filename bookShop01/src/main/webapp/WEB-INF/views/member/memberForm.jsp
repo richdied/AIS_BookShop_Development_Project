@@ -65,7 +65,7 @@ function execDaumPostcode() {
 function fn_overlapped(){
     var _id=$("#_member_id").val();
     if(_id==''){
-   	 alert("ID를 입력하세요");
+   	 alert("IDを入力してください。");
    	 return;
     }
     $.ajax({
@@ -76,16 +76,16 @@ function fn_overlapped(){
        data: {id:_id},
        success:function (data,textStatus){
           if(data=='false'){
-       	    alert("사용할 수 있는 ID입니다.");
+       	    alert("利用可能なIDです。");
        	    $('#btnOverlapped').prop("disabled", true);
        	    $('#_member_id').prop("disabled", true);
        	    $('#member_id').val(_id);
           }else{
-        	  alert("사용할 수 없는 ID입니다.");
+        	  alert("使用できないIDです。");
           }
        },
        error:function(data,textStatus){
-          alert("에러가 발생했습니다.");ㅣ
+          alert("エラーが発生しました。");ㅣ
        },
        complete:function(data,textStatus){
           //alert("작업을완료 했습니다");
@@ -95,37 +95,37 @@ function fn_overlapped(){
 </script>
 </head>
 <body>
-	<h3>필수입력사항</h3>
+	<h3>必須入力事項</h3>
 	<form action="${contextPath}/member/addMember.do" method="post">	
 	<div id="detail_table">
 		<table>
 			<tbody>
 				<tr class="dot_line">
-					<td class="fixed_join">아이디</td>
+					<td class="fixed_join">ID</td>
 					<td>
 					  <input type="text" name="_member_id"  id="_member_id"  size="20" />
 					  <input type="hidden" name="member_id"  id="member_id" />
 					  
-					  <input type="button"  id="btnOverlapped" value="중복체크" onClick="fn_overlapped()" />
+					  <input type="button"  id="btnOverlapped" value="重複チェック" onClick="fn_overlapped()" />
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">비밀번호</td>
+					<td class="fixed_join">パスワード</td>
 					<td><input name="member_pw" type="password" size="20" /></td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">이름</td>
+					<td class="fixed_join">名前</td>
 					<td><input name="member_name" type="text" size="20" /></td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">성별</td>
+					<td class="fixed_join">性別</td>
 					<td><input type="radio" name="member_gender" value="102" />
-						여성<span style="padding-left:120px"></span>
-						 <input type="radio" name="member_gender" value="101" checked />남성
+						女性<span style="padding-left:120px"></span>
+						 <input type="radio" name="member_gender" value="101" checked />男性
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">생년월일</td>
+					<td class="fixed_join">生年月日</td>
 					<td>
 					<select name="member_birth_y">
 					 
@@ -140,7 +140,7 @@ function fn_overlapped(){
 							</c:choose>
 					   	</c:forEach> 
 							
-					</select>년 
+					</select>年
 					 <select name="member_birth_m" >
 					   <c:forEach var="month" begin="1" end="12">
 					       <c:choose>
@@ -152,7 +152,7 @@ function fn_overlapped(){
 							</c:otherwise>
 							</c:choose>
 					   	</c:forEach>
-					</select>월  
+					</select>月
 					<select name="member_birth_d">
 							<c:forEach var="day" begin="1" end="31">
 					       <c:choose>
@@ -164,16 +164,16 @@ function fn_overlapped(){
 							</c:otherwise>
 							</c:choose>
 					   	</c:forEach>
-					</select>일 <span style="padding-left:50px"></span>
-					  <input type="radio" name="member_birth_gn" value="2" checked />양력
+					</select>日 <span style="padding-left:50px"></span>
+					  <input type="radio" name="member_birth_gn" value="2" checked />陽暦
 						 <span style="padding-left:50px"></span>
-						<input type="radio"  name="member_birth_gn" value="1" />음력
+						<input type="radio"  name="member_birth_gn" value="1" />陰暦
 				  </td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">전화번호</td>
+					<td class="fixed_join">電話番号</td>
 					<td><select  name="tel1">
-							<option>없음</option>
+							<option>なし</option>
 							<option value="02">02</option>
 							<option value="031">031</option>
 							<option value="032">032</option>
@@ -202,9 +202,9 @@ function fn_overlapped(){
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">휴대폰번호</td>
+					<td class="fixed_join">携帯番号</td>
 					<td><select  name="hp1">
-							<option>없음</option>
+							<option>なし</option>
 							<option selected value="010">010</option>
 							<option value="011">011</option>
 							<option value="016">016</option>
@@ -212,13 +212,13 @@ function fn_overlapped(){
 							<option value="018">018</option>
 							<option value="019">019</option>
 					</select> - <input size="10px"  type="text" name="hp2"> - <input size="10px"  type="text"name="hp3"><br> <br> 
-					<input type="checkbox"	name="smssts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 SMS 소식을 수신합니다.</td>
+					<input type="checkbox"	name="smssts_yn" value="Y" checked /> ショッピングモールから発送するSMS消息を受信します。</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">이메일<br>(e-mail)</td>
+					<td class="fixed_join">Eメール<br>(e-mail)</td>
 					<td><input size="10px"   type="text" name="email1" /> @ <input  size="10px"  type="text"name="email2" /> 
-						  <select name="email2" onChange=""	title="직접입력">
-									<option value="non">직접입력</option>
+						  <select name="email2" onChange=""	title="直接入力">
+									<option value="non">直接入力</option>
 									<option value="hanmail.net">hanmail.net</option>
 									<option value="naver.com">naver.com</option>
 									<option value="yahoo.co.kr">yahoo.co.kr</option>
@@ -230,17 +230,17 @@ function fn_overlapped(){
 									<option value="empal.com">empal.com</option>
 									<option value="korea.com">korea.com</option>
 									<option value="freechal.com">freechal.com</option>
-							</select><br> <br> <input type="checkbox" name="emailsts_yn" value="Y" checked /> 쇼핑몰에서 발송하는 e-mail을 수신합니다.</td>
+							</select><br> <br> <input type="checkbox" name="emailsts_yn" value="Y" checked /> ショッピングモールで発送するe-mailを受信します。</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">주소</td>
+					<td class="fixed_join">住所</td>
 					<td>
-					   <input type="text" id="zipcode" name="zipcode" size="10" > <a href="javascript:execDaumPostcode()">우편번호검색</a>
+					   <input type="text" id="zipcode" name="zipcode" size="10" > <a href="javascript:execDaumPostcode()">郵便番号検索</a>
 					  <br>
 					  <p> 
-					   지번 주소:<br><input type="text" id="roadAddress"  name="roadAddress" size="50"><br><br>
-					  도로명 주소: <input type="text" id="jibunAddress" name="jibunAddress" size="50"><br><br>
-					  나머지 주소: <input type="text"  name="namujiAddress" size="50" />
+					  地番住所:<br><input type="text" id="roadAddress"  name="roadAddress" size="50"><br><br>
+					  道路名住所: <input type="text" id="jibunAddress" name="jibunAddress" size="50"><br><br>
+					  残りの住所: <input type="text"  name="namujiAddress" size="50" />
 					 <!--   <span id="guide" style="color:#999"></span> -->
 					   </p>
 					</td>
@@ -253,8 +253,8 @@ function fn_overlapped(){
 		<table align=center>
 		<tr >
 			<td >
-				<input type="submit"  value="회원 가입">
-				<input  type="reset"  value="다시입력">
+				<input type="submit"  value="会員登録">
+				<input  type="reset"  value="再入力">
 			</td>
 		</tr>
 	</table>

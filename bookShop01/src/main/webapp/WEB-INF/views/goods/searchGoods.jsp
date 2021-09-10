@@ -13,15 +13,15 @@
       pageContext.setAttribute("br", "<br/>"); //br 태그
 %> 
 <head>
- <title>검색 도서 목록 페이지</title>
+ <title>検索図書目録ページ</title>
 </head>
 <body>
 	<hgroup>
-		<h1>컴퓨터와 인터넷</h1>
-		<h2>오늘의 책</h2>
+		<h1>コンピューターとインターネット</h1>
+		<h2>今日の本</h2>
 	</hgroup>
 	<section id="new_book">
-		<h3>새로나온 책</h3>
+		<h3>新しく出た本</h3>
 		<div id="left_scroll">
 			<a href='javascript:slide("left");'><img src="${contextPath}/resources/image/left.gif"></a>
 		</div>
@@ -31,7 +31,7 @@
 			   <c:when test="${ empty goodsList  }" >
 			        <li>
 					<div id="book">
-						<a><h1>제품이없습니다.</h1></a>
+						<a><h1>製品がありません。</h1></a>
 					  </div>
 				</li> 
 			   </c:when>
@@ -42,7 +42,7 @@
 						<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id}">
 						<img width="75" alt="" src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}">
 						</a>
-						<div class="sort">[컴퓨터 인터넷]</div>
+						<div class="sort">[コンピューター·インターネット]</div>
 						<div class="title">
 							<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
 							  ${item.goods_title}
@@ -52,10 +52,10 @@
 						<div class="price">
 							<span>
 							  <fmt:formatNumber  value="${item.goods_price}" type="number" var="goods_price" />
-		                         ${goods_price}원
+		                         ${goods_price}円
 							</span> <br>
 							 <fmt:formatNumber  value="${item.goods_price*0.9}" type="number" var="discounted_price" />
-				               ${discounted_price}원(10%할인)
+				               ${discounted_price}円(10%割引)
 						</div>
 					</div>
 				</li>
@@ -77,9 +77,9 @@
 	<div class="clear"></div>
 	<div id="sorting">
 		<ul>
-			<li><a class="active" href="#">베스트 셀러</a></li>
-			<li><a href="#">최신 출간</a></li>
-			<li><a style="border: currentColor; border-image: none;" href="#">최근 등록</a></li>
+			<li><a class="active" href="#">ベストセラー</a></li>
+			<li><a href="#">最新出版</a></li>
+			<li><a style="border: currentColor; border-image: none;" href="#">直近登録</a></li>
 		</ul>
 	</div>
 	<table id="list_view">
@@ -97,22 +97,22 @@
 						</h2>
 						<c:set var="goods_pub_date" value="${item.goods_published_date }" />
 					   <c:set var="arr" value="${fn:split(goods_pub_date,' ')}" />
-						<div class="writer_press"  >${item.goods_writer }저
+						<div class="writer_press"  >${item.goods_writer }著
 							|${item.goods_publisher }|<c:out value="${arr[0]}" />
 						</div>
 					</td>
-					<td class="price"><span>${item.goods_price }원</span><br>
+					<td class="price"><span>${item.goods_price }円</span><br>
 						<strong>
 						 <fmt:formatNumber  value="${item.goods_price*0.9}" type="number" var="discounted_price" />
-				               ${discounted_price}원
-						</strong><br>(10% 할인)
+				               ${discounted_price}円
+						</strong><br>(10% 割引)
 					</td>
 					<td><input type="checkbox" value=""></td>
 					<td class="buy_btns">
 						<UL>
-							<li><a href="#">장바구니</a></li>
-							<li><a href="#">구매하기</a></li>
-							<li><a href="#">비교하기</a></li>
+							<li><a href="#">ショッピングカート</a></li>
+							<li><a href="#">購入する</a></li>
+							<li><a href="#">比較する</a></li>
 						</UL>
 					</td>
 			</tr>

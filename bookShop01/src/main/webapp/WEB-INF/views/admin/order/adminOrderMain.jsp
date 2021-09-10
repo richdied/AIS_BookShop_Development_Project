@@ -140,15 +140,15 @@ function fn_modify_order_state(order_id,select_id){
 		},
 		success : function(data, textStatus) {
 			if(data.trim()=='mod_success'){
-				alert("주문 정보를 수정했습니다.");
+				alert("注文情報を修正しました。");
 				location.href="${contextPath}//admin/order/adminOrderMain.do";
 			}else if(data.trim()=='failed'){
-				alert("다시 시도해 주세요.");	
+				alert("もう一度試してください。");	
 			}
 			
 		},
 		error : function(data, textStatus) {
-			alert("에러가 발생했습니다."+data);
+			alert("エラーが発生しました。"+data);
 		},
 		complete : function(data, textStatus) {
 			//alert("작업을완료 했습니다");
@@ -267,14 +267,14 @@ function fn_detail_search(){
 </script>
 </head>
 <body>
-	<H3>주문 조회</H3>
+	<H3>注文照会</H3>
 	<form name="frm_delivery_list" action="${contextPath }/admin/admin.do" method="post">	
 		<table   >
 			<tbody>
 				<tr>
 					<td>
-						<input type="radio" name="r_search_option" value="simple_search" checked onClick="fn_enable_detail_search(this)"/> 간단조회 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="r_search_option" value="detail_search"  onClick="fn_enable_detail_search(this)" /> 상세조회 &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="r_search_option" value="simple_search" checked onClick="fn_enable_detail_search(this)"/> 簡単照会 &nbsp;&nbsp;&nbsp;
+						<input type="radio" name="r_search_option" value="detail_search"  onClick="fn_enable_detail_search(this)" /> 詳細照会 &nbsp;&nbsp;&nbsp;
 					</td>
 				</tr>
 				<tr>
@@ -290,7 +290,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>
-					</select>년 <select name="curMonth" >
+					</select>年 <select name="curMonth" >
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
 					        <c:when test="${endMonth==i }">
@@ -301,7 +301,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>					
-					</select>월
+					</select>月
 					
 					 <select name="curDay">
 					  <c:forEach   var="i" begin="1" end="31">
@@ -314,35 +314,14 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>	
-					</select>일  &nbsp;이전&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a href="javascript:search_order_history('today')">
-					   <img   src="${contextPath}/resources/image/btn_search_one_day.jpg">
-					</a>
-					<a href="javascript:search_order_history('one_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_week.jpg">
-					</a>
-					<a href="javascript:search_order_history('two_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_week.jpg">
-					</a>
-					<a href="javascript:search_order_history('one_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('two_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('three_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_3_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('four_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_4_month.jpg">
-					</a>
-					&nbsp;까지 조회
+					</select>日  以前&nbsp;&nbsp;&nbsp;&nbsp; 
+
 					</td>
 				</tr>
 				
 				<tr>
 				  <td>
-					조회 기간:
+					照会期間:
 					<select name="beginYear" disabled>
 					 <c:forEach   var="i" begin="0" end="5">
 					      <c:choose>
@@ -354,7 +333,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>
-					</select>년 
+					</select>年
 					<select name="beginMonth" disabled >
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
@@ -373,7 +352,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>					
-					</select>월
+					</select>月
 					 <select name="beginDay" disabled >
 					  <c:forEach   var="i" begin="1" end="31">
 					      <c:choose>
@@ -392,7 +371,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>	
-					</select>일  &nbsp; ~
+					</select>日  &nbsp; ~
 					
 					<select name="endYear" disabled >
 					 <c:forEach   var="i" begin="0" end="5">
@@ -405,7 +384,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>
-					</select>년 
+					</select>年 
 					<select name="endMonth" disabled >
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
@@ -424,7 +403,7 @@ function fn_detail_search(){
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>					
-					</select>월
+					</select>月
 					 <select name="endDay" disabled >
 					  <c:forEach   var="i" begin="1" end="31">
 					      <c:choose>
@@ -450,14 +429,14 @@ function fn_detail_search(){
 				<tr>
 				  <td>
 				    <select name="s_search_type" disabled >
-						<option value="all" checked>전체</option>
-						<option value="orderer_name">주문자이름</option>
-						<option value="orderer_id">주문자아이디</option>
-						<option value="orderer_hp">주문자휴대폰번호</option>
-						<option value="orderer_goods">주문상품품명</option>
+						<option value="all" checked>全体</option>
+						<option value="orderer_name">注文者名前</option>
+						<option value="orderer_id">注文者ID</option>
+						<option value="orderer_hp">注文者携帯番号</option>
+						<option value="orderer_goods">注文商品品名</option>
 					</select>
 					<input  type="text"  size="30" name="t_search_word" disabled />  
-					<input   type="button"  value="조회" name="btn_search" onClick="fn_detail_search()" disabled  />
+					<input   type="button"  value="照会" name="btn_search" onClick="fn_detail_search()" disabled  />
 				  </td>
 				</tr>				
 			</tbody>
@@ -469,17 +448,17 @@ function fn_detail_search(){
 <table class="list_view">
 		<tbody align=center >
 			<tr style="background:#33ff00" >
-				<td class="fixed" >주문번호</td>
-				<td class="fixed">주문일자</td>
-				<td>주문내역</td>
-				<td>배송상태</td>
-				<td>배송수정</td>
+				<td class="fixed" >注文番号</td>
+				<td class="fixed">注文日付</td>
+				<td>注文内訳</td>
+				<td>配送状態</td>
+				<td>配送修正</td>
 			</tr>
    <c:choose>
      <c:when test="${empty newOrderList}">			
 			<tr>
 		       <td colspan=5 class="fixed">
-				  <strong>주문한 상품이 없습니다.</strong>
+				  <strong>注文した商品がありません。</strong>
 			   </td>
 		     </tr>
 	 </c:when>
@@ -507,15 +486,15 @@ function fn_detail_search(){
 				 <strong>${item.pay_order_time }</strong> 
 				</td>
 				<td width=50% align=left >
-				    <strong>주문자:${item.orderer_name}</strong><br>
-				  <strong>주문자 번화번호:${item.orderer_hp}</strong><br>
-				  <strong>수령자:${item.receiver_name}</strong><br>
-				  <strong>수령자 번화번호:${item.receiver_hp1}-${item.receiver_hp2}-${item.receiver_hp3}</strong><br>
-				  <strong>주문상품명(수량):${item.goods_title}(${item.order_goods_qty})</strong><br>
+				    <strong>注文者:${item.orderer_name}</strong><br>
+				  <strong>注文者電話番号:${item.orderer_hp}</strong><br>
+				  <strong>受取人:${item.receiver_name}</strong><br>
+				  <strong>受取人電話番号:${item.receiver_hp1}-${item.receiver_hp2}-${item.receiver_hp3}</strong><br>
+				  <strong>注文商品名(数量):${item.goods_title}(${item.order_goods_qty})</strong><br>
 				     <c:forEach var="item2" items="${newOrderList}" varStatus="j">
 				       <c:if test="${j.index > i.index }" >
 				          <c:if  test="${item.order_id ==item2.order_id}" >
-				            <strong>주문상품명(수량):${item2.goods_title}(${item2.order_goods_qty})</strong><br>
+				            <strong>注文商品名(数量):${item2.goods_title}(${item2.order_goods_qty})</strong><br>
 				      </c:if>   
 				       </c:if>
 				    </c:forEach> 
@@ -524,45 +503,45 @@ function fn_detail_search(){
 				 <select name="s_delivery_state${i.index }"  id="s_delivery_state${i.index }">
 				 <c:choose>
 				   <c:when test="${item.delivery_state=='delivery_prepared' }">
-				     <option  value="delivery_prepared" selected>배송준비중</option>
-				     <option  value="delivering">배송중</option>
-				     <option  value="finished_delivering">배송완료</option>
-				     <option  value="cancel_order">주문취소</option>
-				     <option  value="returning_goods">반품</option>
+				     <option  value="delivery_prepared" selected>配送準備中</option>
+				     <option  value="delivering">配送中</option>
+				     <option  value="finished_delivering">配送済み</option>
+				     <option  value="cancel_order">注文取り消し</option>
+				     <option  value="returning_goods">返品</option>
 				   </c:when>
 				    <c:when test="${item.delivery_state=='delivering' }">
-				    <option  value="delivery_prepared" >배송준비중</option>
-				     <option  value="delivering" selected >배송중</option>
-				     <option  value="finished_delivering">배송완료</option>
-				     <option  value="cancel_order">주문취소</option>
-				     <option  value="returning_goods">반품</option>
+				    <option  value="delivery_prepared" >配送準備中</option>
+				     <option  value="delivering" selected >配送中</option>
+				     <option  value="finished_delivering">配送済み</option>
+				     <option  value="cancel_order">注文取り消し</option>
+				     <option  value="returning_goods">返品</option>
 				   </c:when>
 				   <c:when test="${item.delivery_state=='finished_delivering' }">
-				    <option  value="delivery_prepared" >배송준비중</option>
-				     <option  value="delivering"  >배송중</option>
-				     <option  value="finished_delivering" selected>배송완료</option>
-				     <option  value="cancel_order">주문취소</option>
-				     <option  value="returning_goods">반품</option>
+				    <option  value="delivery_prepared" >配送準備中</option>
+				     <option  value="delivering"  >配送中</option>
+				     <option  value="finished_delivering" selected>配送済み</option>
+				     <option  value="cancel_order">注文取り消し</option>
+				     <option  value="returning_goods">返品</option>
 				   </c:when>
 				   <c:when test="${item.delivery_state=='cancel_order' }">
-				    <option  value="delivery_prepared" >배송준비중</option>
-				     <option  value="delivering"  >배송중</option>
-				     <option  value="finished_delivering" >배송완료</option>
-				     <option  value="cancel_order" selected>주문취소</option>
-				     <option  value="returning_goods">반품</option>
+				    <option  value="delivery_prepared" >配送準備中</option>
+				     <option  value="delivering"  >配送中</option>
+				     <option  value="finished_delivering" >配送済み</option>
+				     <option  value="cancel_order" selected>注文取り消し</option>
+				     <option  value="returning_goods">返品</option>
 				   </c:when>
 				   <c:when test="${item.delivery_state=='returning_goods' }">
-				    <option  value="delivery_prepared" >배송준비중</option>
-				     <option  value="delivering"  >배송중</option>
-				     <option  value="finished_delivering" >배송완료</option>
-				     <option  value="cancel_order" >주문취소</option>
-				     <option  value="returning_goods" selected>반품</option>
+				    <option  value="delivery_prepared" >配送準備中</option>
+				     <option  value="delivering"  >配送中</option>
+				     <option  value="finished_delivering" >配送済み</option>
+				     <option  value="cancel_order" >注文取り消し</option>
+				     <option  value="returning_goods" selected>返品</option>
 				   </c:when>
 				   </c:choose>
 				 </select> 
 				</td>
 				<td width=10%>
-			     <input  type="button" value="배송수정"  onClick="fn_modify_order_state('${item.order_id}','s_delivery_state${i.index}')"/>
+			     <input  type="button" value="配送修正"  onClick="fn_modify_order_state('${item.order_id}','s_delivery_state${i.index}')"/>
 			    </td>
 			</tr>
 		</c:when>

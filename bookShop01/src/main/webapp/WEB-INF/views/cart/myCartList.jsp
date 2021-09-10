@@ -79,14 +79,14 @@ function modify_cart_qty(goods_id,bookPrice,index){
 		success : function(data, textStatus) {
 			//alert(data);
 			if(data.trim()=='modify_success'){
-				alert("수량을 변경했습니다!!");	
-			}else{
-				alert("다시 시도해 주세요!!");	
+				alert（"数量を変更しました！！");
+			} else {
+			alert("もう一度試してください!!")");
 			}
-			
-		},
-		error : function(data, textStatus) {
-			alert("에러가 발생했습니다."+data);
+
+			},
+			error : function ( data , textStatus ) {
+			alert("エラーが発生しました。" + data ) 
 		},
 		complete : function(data, textStatus) {
 			//alert("작업을완료 했습니다");
@@ -186,20 +186,20 @@ function fn_order_all_cart_goods(){
 	<table class="list_view">
 		<tbody align=center >
 			<tr style="background:#33ff00" >
-				<td class="fixed" >구분</td>
-				<td colspan=2 class="fixed">상품명</td>
-				<td>정가</td>
-				<td>판매가</td>
-				<td>수량</td>
-				<td>합계</td>
-				<td>주문</td>
+				<td class="fixed" >区分</td>
+				<td colspan=2 class="fixed">商品名</td>
+<td> 定価</td>
+<td>販売価格</td>
+<td>数量</td>
+<td>合計</td>
+<td>注文</td>
 			</tr>
 			
 			 <c:choose>
 				    <c:when test="${ empty myCartList }">
 				    <tr>
 				       <td colspan=8 class="fixed">
-				         <strong>장바구니에 상품이 없습니다.</strong>
+				         <strong>ショッピングバッグに商品がありません。</strong>
 				       </td>
 				     </tr>
 				    </c:when>
@@ -220,39 +220,36 @@ function fn_order_all_cart_goods(){
 							<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">${item.goods_title }</a>
 						</h2>
 					</td>
-					<td class="price"><span>${item.goods_price }원</span></td>
+					<td class="price"><span>${item.goods_price }円</span></td>
 					<td>
 					   <strong>
 					      <fmt:formatNumber  value="${item.goods_sales_price*0.9}" type="number" var="discounted_price" />
-				            ${discounted_price}원(10%할인)
+				            ${discounted_price}円(10%割引)
 				         </strong>
 					</td>
 					<td>
 					   <input type="text" id="cart_goods_qty" name="cart_goods_qty" size=3 value="${cart_goods_qty}"><br>
 						<a href="javascript:modify_cart_qty(${item.goods_id },${item.goods_sales_price*0.9 },${cnt.count-1 });" >
-						    <img width=25 alt=""  src="${contextPath}/resources/image/btn_modify_qty.jpg">
+						  
 						</a>
 					</td>
 					<td>
 					   <strong>
 					    <fmt:formatNumber  value="${item.goods_sales_price*0.9*cart_goods_qty}" type="number" var="total_sales_price" />
-				         ${total_sales_price}원
+				         ${total_sales_price}円
 					</strong> </td>
 					<td>
 					      <a href="javascript:fn_order_each_goods('${item.goods_id }','${item.goods_title }','${item.goods_sales_price}','${item.goods_fileName}');">
-					       	<img width="75" alt=""  src="${contextPath}/resources/image/btn_order.jpg">
+					       	<input name="btn_cancel_member" type="button"  value="注文する">
 							</a><br>
 					 	<a href="#"> 
-					 	   <img width="75" alt=""
-							src="${contextPath}/resources/image/btn_order_later.jpg">
+					
 						</a><br> 
 						<a href="#"> 
-						   <img width="75" alt=""
-							src="${contextPath}/resources/image/btn_add_list.jpg">
+						
 						</A><br> 
 						<a href="javascript:delete_cart_goods('${cart_id}');""> 
-						   <img width="75" alt=""
-							   src="${contextPath}/resources/image/btn_delete.jpg">
+						   
 					   </a>
 					</td>
 			</tr>
@@ -272,24 +269,24 @@ function fn_order_all_cart_goods(){
 	<table  width=80%   class="list_view" style="background:#cacaff">
 	<tbody>
 	     <tr  align=center  class="fixed" >
-	       <td class="fixed">총 상품수 </td>
-	       <td>총 상품금액</td>
+	       <td class="fixed">総商品数 </td>
+	       <td>総賞品金額</td>
 	       <td>  </td>
-	       <td>총 배송비</td>
+	       <td>総配送料</td>
 	       <td>  </td>
-	       <td>총 할인 금액 </td>
+	       <td>総割引金額 </td>
 	       <td>  </td>
-	       <td>최종 결제금액</td>
+	       <td>最終決済金額</td>
 	     </tr>
 		<tr cellpadding=40  align=center >
 			<td id="">
-			  <p id="p_totalGoodsNum">${totalGoodsNum}개 </p>
+			  <p id="p_totalGoodsNum">${totalGoodsNum}個 </p>
 			  <input id="h_totalGoodsNum"type="hidden" value="${totalGoodsNum}"  />
 			</td>
 	       <td>
 	          <p id="p_totalGoodsPrice">
 	          <fmt:formatNumber  value="${totalGoodsPrice}" type="number" var="total_goods_price" />
-				         ${total_goods_price}원
+				         ${total_goods_price}円
 	          </p>
 	          <input id="h_totalGoodsPrice"type="hidden" value="${totalGoodsPrice}" />
 	       </td>
@@ -297,7 +294,7 @@ function fn_order_all_cart_goods(){
 	          <img width="25" alt="" src="${contextPath}/resources/image/plus.jpg">  
 	       </td>
 	       <td>
-	         <p id="p_totalDeliveryPrice">${totalDeliveryPrice }원  </p>
+	         <p id="p_totalDeliveryPrice">${totalDeliveryPrice }円  </p>
 	         <input id="h_totalDeliveryPrice"type="hidden" value="${totalDeliveryPrice}" />
 	       </td>
 	       <td> 
@@ -305,7 +302,7 @@ function fn_order_all_cart_goods(){
 	       </td>
 	       <td>  
 	         <p id="p_totalSalesPrice"> 
-				         ${totalDiscountedPrice}원
+				         ${totalDiscountedPrice}円
 	         </p>
 	         <input id="h_totalSalesPrice"type="hidden" value="${totalSalesPrice}" />
 	       </td>
@@ -315,7 +312,7 @@ function fn_order_all_cart_goods(){
 	       <td>
 	          <p id="p_final_totalPrice">
 	          <fmt:formatNumber  value="${totalGoodsPrice+totalDeliveryPrice-totalDiscountedPrice}" type="number" var="total_price" />
-	            ${total_price}원
+	            ${total_price}円
 	          </p>
 	          <input id="h_final_totalPrice" type="hidden" value="${totalGoodsPrice+totalDeliveryPrice-totalDiscountedPrice}" />
 	       </td>
@@ -325,10 +322,10 @@ function fn_order_all_cart_goods(){
 	<center>
     <br><br>	
 		 <a href="javascript:fn_order_all_cart_goods()">
-		 	<img width="75" alt="" src="${contextPath}/resources/image/btn_order_final.jpg">
+		 	    <input name="btn_cancel_member" type="button"  value="注文する">
 		 </a>
 		 <a href="#">
-		 	<img width="75" alt="" src="${contextPath}/resources/image/btn_shoping_continue.jpg">
+		 	    <input name="btn_cancel_member" type="button"  value="ずっとショッピングする">
 		 </a>
 	<center>
 </form>	

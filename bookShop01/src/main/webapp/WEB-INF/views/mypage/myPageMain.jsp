@@ -15,13 +15,13 @@
 	}
 	
 	function init(){
-		alert("주문을 취소했습니다.");
+		alert("注文をキャンセルしました。");
 	}
 	</script>
 </c:if>
 <script>
 function fn_cancel_order(order_id){
-	var answer=confirm("주문을 취소하시겠습니까?");
+	var answer=confirm("注文をキャンセルしますか。");
 	if(answer==true){
 		var formObj=document.createElement("form");
 		var i_order_id = document.createElement("input"); 
@@ -40,23 +40,23 @@ function fn_cancel_order(order_id){
 </script>
 </head>
 <body>
-<h1>최근주문내역
-    <A href="#"> <IMG  src="${contextPath}/resources/image/btn_more_see.jpg">  </A> 
+<h1>最近の注文内容
+    <A href="#"> <input name="btn_cancel_member" type="button"  value="more">  </A> 
 </h1>
 <table class="list_view">
 		<tbody align=center >
 			<tr style="background:#33ff00" >
-				<td>주문번호</td>
-				<td>주문일자</td>
-				<td>주문상품</td>
-				<td>주문상태</td>
-				<td>주문취소</td>
+				<td>注文番号</td>
+				<td>注文日付</td>
+				<td>注文商品</td>
+				<td>注文状態</td>
+				<td>注文取り消し</td>
 			</tr>
       <c:choose>
          <c:when test="${ empty myOrderList  }">
 		  <tr>
 		    <td colspan=5 class="fixed">
-				  <strong>주문한 상품이 없습니다.</strong>
+				  <strong>注文した商品がありません。</strong>
 		    </td>
 		  </tr>
         </c:when>
@@ -84,36 +84,36 @@ function fn_cancel_order(order_id){
 			   <strong>
 			      <c:forEach var="item2" items="${myOrderList}" varStatus="j">
 			          <c:if  test="${item.order_id ==item2.order_id}" >
-			            <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }/${item.order_goods_qty }개</a><br>
+			            <a href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }/${item.order_goods_qty }個</a><br>
 			         </c:if>   
 				 </c:forEach>
 				</strong></td>
 			<td>
 			  <c:choose>
 			    <c:when test="${item.delivery_state=='delivery_prepared' }">
-			       배송준비중
+			      配送準備中
 			    </c:when>
 			    <c:when test="${item.delivery_state=='delivering' }">
-			       배송중
+			       配送中
 			    </c:when>
 			    <c:when test="${item.delivery_state=='finished_delivering' }">
-			       배송완료
+			       配送済み
 			    </c:when>
 			    <c:when test="${item.delivery_state=='cancel_order' }">
-			       주문취소
+			       注文取り消し
 			    </c:when>
 			    <c:when test="${item.delivery_state=='returning_goods' }">
-			       반품완료
+			       返品完了
 			    </c:when>
 			  </c:choose>
 			</td>
 			<td>
 			  <c:choose>
 			   <c:when test="${item.delivery_state=='delivery_prepared'}">
-			       <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="주문취소"  />
+			       <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="注文取り消し"  />
 			   </c:when>
 			   <c:otherwise>
-			      <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="주문취소" disabled />
+			      <input  type="button" onClick="fn_cancel_order('${item.order_id}')" value="注文取り消し" disabled />
 			   </c:otherwise>
 			  </c:choose>
 			</td>
@@ -128,44 +128,38 @@ function fn_cancel_order(order_id){
 </table>
 
 <br><br><br>	
-<h1>계좌내역
-    <a href="#"> <img  src="${contextPath}/resources/image/btn_more_see.jpg" />  </a>
+<h1>口座内訳
+    <a href="#"> <input name="btn_cancel_member" type="button"  value="more">  </a>
 </h1>
 <table border=0 width=100%  cellpadding=10 cellspacing=10>
   <tr>
     <td>
-	   예치금 &nbsp;&nbsp;  <strong>10000원</strong>
+	   預かり金 &nbsp;&nbsp;  <strong>1000円</strong>
    </td>
     <td>
-	   쇼핑머니 &nbsp;&nbsp; <strong>9000원</strong>
+	   ショッピング·マネー &nbsp;&nbsp; <strong>900円</strong>
    </td>
    </tr>
    <tr>
     <td>
-	   쿠폰 &nbsp;&nbsp;  <strong>6000원</strong>
+	   クーポン &nbsp;&nbsp;  <strong>600円</strong>
    </td>
     <td>
-	   포인트 &nbsp;&nbsp; <strong>2000원</strong>
+	   ポイント &nbsp;&nbsp; <strong>200円</strong>
    </td>
    </tr>
    <tr>
-    <td>
-	   상품권 &nbsp;&nbsp;  <strong>4000원</strong>
-   </td>
-    <td>
-		디지털머니 &nbsp;&nbsp; <strong>9000원</strong>
-   </td>
    </tr>
 </table>
 
 <br><br><br>	
-<h1>나의 정보
-    <a href="#"> <img  src="${contextPath}/resources/image/btn_more_see.jpg" />  </a>
+<h1>私の情報
+    <a href="#"> <input name="btn_cancel_member" type="button"  value="more">  </a>
 </h1>
 <table border=0 width=100% cellpadding=10 cellspacing=10>
   <tr>
     <td>
-	   이메일:
+	   メールアドレス:
    </td>
     <td>
 	   <strong>${memberInfo.email1 }@${memberInfo.email2 }</strong>
@@ -173,7 +167,7 @@ function fn_cancel_order(order_id){
    </tr>
    <tr>
     <td>
-	   전화번호 
+	   携帯番号: 
    </td>
     <td>
 	   <strong>${memberInfo.hp1 }-${memberInfo.hp2}-${memberInfo.hp3 }</strong>
@@ -181,11 +175,11 @@ function fn_cancel_order(order_id){
    </tr>
    <tr>
     <td>
-	  주소 
+	  アドレス:
    </td>
     <td>
-		도로명:  &nbsp;&nbsp; <strong>${memberInfo.roadAddress }</strong>  <br>
-		지번:   &nbsp;&nbsp; <strong>${memberInfo.jibunAddress }</strong> 
+		道路名:  &nbsp;&nbsp; <strong>${memberInfo.roadAddress }</strong>  <br>
+		地番:   &nbsp;&nbsp; <strong>${memberInfo.jibunAddress }</strong> 
    </td>
    </tr>
 </table>
